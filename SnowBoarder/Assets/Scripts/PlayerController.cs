@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float boostSpeed = 30f;
     [SerializeField] float baseSpeed = 15f;
     public Rigidbody2D rigidBody { get; private set; }
+    private bool crashing { get; set; } = false;
     SurfaceEffector2D surfaceEffector2D;
 
     void Start()
@@ -16,12 +17,19 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        RespondToBoost();
-        rigidBody.AddTorque(-Input.GetAxis("Horizontal") * torqueAmount);
+        if (!crashing) {
+            RespondToBoost();
+            rigidBody.AddTorque(-Input.GetAxis("Horizontal") * torqueAmount);
+        }
     }
 
     private void RespondToBoost()
     {
         surfaceEffector2D.speed = Input.GetAxis("Jump") > 0 ? boostSpeed : baseSpeed;
+    }
+
+    public void SetCrashing(bool isCrashing)
+    {
+        crashing = isCrashing;
     }
 }

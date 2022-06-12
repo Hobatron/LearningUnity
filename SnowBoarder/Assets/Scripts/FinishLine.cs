@@ -10,6 +10,7 @@ public class FinishLine : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            GetComponent<AudioSource>().Play();
             finishEffect.Play();
             Invoke("ResetScene", 1f);
         }
