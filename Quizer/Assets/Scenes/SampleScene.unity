@@ -769,7 +769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToComplete: 15
-  timeToShowAnswer: 5
+  timeToShowAnswer: 0.52
   QuizCanvas: {fileID: 345060885}
   isAnsweringQuestion: 1
 --- !u!1001 &983882715
@@ -1379,7 +1379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464c2a8113287c249b7df4376731a3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1534346116}
+  scoreText: {fileID: 1079560806}
+  score: {fileID: 488373361}
 --- !u!114 &1159492876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2680,13 +2681,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 1f3c949e0e0e93f4fb3be2b31b7166a3, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1743184008}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnReplayLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
