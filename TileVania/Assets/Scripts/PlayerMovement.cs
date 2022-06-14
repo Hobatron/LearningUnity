@@ -5,26 +5,33 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float climbSpeed = 6f;
-    public float runSpeed = 9f;
-    public float jumpSpeed = 22f;
-    bool playerIsReallyMoving;
-    bool playerIsClimbing;
+    [SerializeField] GameObject arrow;
+    [SerializeField] Transform bow;
     Animator animator;
     CapsuleCollider2D playerCollider;
     Rigidbody2D rb2d;
     Vector2 moveInput;
+    ParticleSystem blood;
+    public float runSpeed = 9f;
+    public float jumpSpeed = 22f;
+    bool playerIsReallyMoving;
+    bool playerIsClimbing;
     int groundLayer;
     int climbingLayer;
+    private int hazardsLayer;
     float initGravity;
+    private bool disableControls = false;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         initGravity = rb2d.gravityScale;
         animator = GetComponent<Animator>();
+        blood = GetComponentInChildren<ParticleSystem>();
         playerCollider = GetComponent<CapsuleCollider2D>();
         groundLayer = LayerMask.GetMask("Ground");
         climbingLayer = LayerMask.GetMask("Climbing");
+        hazardsLayer = LayerMask.GetMask("Hazards");
     }
 
     private void Run()
@@ -50,11 +57,40 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        playerIsReallyMoving = MathF.Abs(moveInput.x) > Mathf.Epsilon;
-        playerIsClimbing = MathF.Abs(moveInput.y) > Mathf.Epsilon;
-        Climb();
-        Run();
-        FlipSprite();
+        
+        if (!disableControls)
+        {
+            playerIsReallyMoving = MathF.Abs(moveInput.x) > Mathf.Epsilon;
+            playerIsClimbing = MathF.Abs(moveInput.y) > Mathf.Epsilon;
+            Climb();
+            Run();
+            FlipSprite();
+        }
+    }
+
+    void ToggleShooting()
+    {
+        disableControls = !disableControls;
+    }
+
+    void ShootArrow()
+    {
+        Instantiate(arrow, bow.position, transform.rotation);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if ((other.gameObject.tag == "Goober" || rb2d.IsTouchingLayers(hazardsLayer)) && !disableControls)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        disableControls = true;
+        animator.SetTrigger("deathTrigger");
+        rb2d.velocity = new Vector2(0, jumpSpeed);
+        blood.Play();
     }
 
     private void FlipSprite()
@@ -65,6 +101,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void OnFire()
+    {
+        animator.SetTrigger("shootTrigger");
+    }
+
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -72,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        if (value.isPressed && playerCollider.IsTouchingLayers(groundLayer))
+        if (value.isPressed && playerCollider.IsTouchingLayers(groundLayer) && !disableControls)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
         }

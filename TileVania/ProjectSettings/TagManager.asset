@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Goober
+  - Arrow
   layers:
   - Default
   - TransparentFX
@@ -15,10 +17,10 @@ TagManager:
   - Climbing
   - Player
   - Background
-  - 
-  - 
-  - 
-  - 
+  - Bouncing
+  - Enemy
+  - Hazards
+  - Arrow
   - 
   - 
   - 
@@ -52,6 +54,9 @@ TagManager:
     locked: 0
   - name: Platforms
     uniqueID: 2958033895
+    locked: 0
+  - name: Enemy
+    uniqueID: 660867695
     locked: 0
   - name: Player
     uniqueID: 1110433897
