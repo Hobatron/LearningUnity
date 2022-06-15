@@ -23,11 +23,6 @@ public class Arrow : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) 
     {
-        Debug.Log(other.tag);
-        if (other.tag == "Goober")
-        {
-            Destroy(other.gameObject);
-        }
         Destroy(gameObject);
     }
 }

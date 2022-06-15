@@ -5017,7 +5017,7 @@ MonoBehaviour:
   climbSpeed: 3
   arrow: {fileID: 5054054828743109291, guid: 2fbb82a03e1bfb04c8b3121f8c7a64d5, type: 3}
   bow: {fileID: 7376601570979879434}
-  runSpeed: 13
+  runSpeed: 18
   jumpSpeed: 22
 --- !u!61 &3927652757988672936
 BoxCollider2D:

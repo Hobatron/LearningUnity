@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveInput;
     ParticleSystem blood;
     SceneManager sceneManager;
-    public float runSpeed = 9f;
+    public float runSpeed = 8.5f;
     public float jumpSpeed = 22f;
     bool playerIsReallyMoving;
     bool playerIsClimbing;
