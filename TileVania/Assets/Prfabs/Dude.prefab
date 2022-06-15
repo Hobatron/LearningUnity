@@ -4790,7 +4790,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1110433897
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4840,7 +4840,7 @@ GameObject:
   - component: {fileID: 3927652757988672936}
   m_Layer: 8
   m_Name: Dude
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4921,7 +4921,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1110433897
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -1156705549, guid: 773b8e92c2504c8408f6ae2342071d7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5013,6 +5013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f64f04e0410e454ba2f5c88c8402957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSession: {fileID: 7927238750093642855, guid: 696c2e9662f7d17419e3301ad8652878, type: 3}
   climbSpeed: 3
   arrow: {fileID: 5054054828743109291, guid: 2fbb82a03e1bfb04c8b3121f8c7a64d5, type: 3}
   bow: {fileID: 7376601570979879434}

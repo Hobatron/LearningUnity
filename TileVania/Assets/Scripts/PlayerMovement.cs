@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] GameSession gameSession;
     [SerializeField] float climbSpeed = 6f;
     [SerializeField] GameObject arrow;
     [SerializeField] Transform bow;
@@ -12,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb2d;
     Vector2 moveInput;
     ParticleSystem blood;
+    SceneManager sceneManager;
     public float runSpeed = 9f;
     public float jumpSpeed = 22f;
     bool playerIsReallyMoving;
@@ -21,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private int hazardsLayer;
     float initGravity;
     private bool disableControls = false;
+    private bool isShooting = false;
+    private bool allowClickToRetry;
 
     void Start()
     {
@@ -70,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
     void ToggleShooting()
     {
-        disableControls = !disableControls;
+        isShooting = !isShooting;
     }
 
     void ShootArrow()
@@ -91,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("deathTrigger");
         rb2d.velocity = new Vector2(0, jumpSpeed);
         blood.Play();
+        gameSession.ProcessPlayerDeath();
     }
 
     private void FlipSprite()

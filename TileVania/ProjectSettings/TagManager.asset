@@ -21,7 +21,7 @@ TagManager:
   - Enemy
   - Hazards
   - Arrow
-  - 
+  - Exit
   - 
   - 
   - 
@@ -54,6 +54,9 @@ TagManager:
     locked: 0
   - name: Platforms
     uniqueID: 2958033895
+    locked: 0
+  - name: Exit
+    uniqueID: 64512729
     locked: 0
   - name: Enemy
     uniqueID: 660867695
