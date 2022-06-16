@@ -54,7 +54,7 @@ public class EnemyMovment : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (myBoxCollider.IsTouchingLayers(groundLayer))
         {
-            transform.localScale = new Vector2 (transform.localScale.x * -1, 1f);
+            transform.localScale = new Vector2 (transform.localScale.x * -1, transform.localScale.y);
             direction *= -1;
         }
         if (other.tag == "Arrow")

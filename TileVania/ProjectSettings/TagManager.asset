@@ -7,6 +7,8 @@ TagManager:
   - Goober
   - Arrow
   - Map
+  - BasicCoin
+  - BigCoin
   layers:
   - Default
   - TransparentFX
@@ -24,7 +26,7 @@ TagManager:
   - Arrow
   - Exit
   - NonInteractive
-  - 
+  - Interactables
   - 
   - 
   - 
@@ -61,6 +63,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 660867695
+    locked: 0
+  - name: Interactables
+    uniqueID: 1190627565
     locked: 0
   - name: Player
     uniqueID: 1110433897

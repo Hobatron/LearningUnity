@@ -3,12 +3,9 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
-
 public class DeathCanvas : MonoBehaviour
 {
     private CanvasGroup deathCanvas;
-    [SerializeField] private bool fadeOut = true; // true fades in; false fades out
     [SerializeField] private float time = .01f;
     [SerializeField] private float maxAlpha = 1f;
     [SerializeField] private TextMeshProUGUI lifeCounter;
@@ -35,7 +32,6 @@ public class DeathCanvas : MonoBehaviour
 
     public void FadeIn(int? lives = null, Action callBack = null)
     {
-        Debug.Log(lives);
         switch (lives)
         {
             case 2: 

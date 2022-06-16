@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] GameSession gameSession;
+    private GameSession gameSession;
     [SerializeField] float climbSpeed = 6f;
     [SerializeField] GameObject arrow;
     [SerializeField] Transform bow;
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveInput;
     ParticleSystem blood;
     SceneManager sceneManager;
-    public float runSpeed = 8.5f;
+    public float runSpeed = 8000f;
     public float jumpSpeed = 22f;
     bool playerIsReallyMoving;
     bool playerIsClimbing;
@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         blood = GetComponentInChildren<ParticleSystem>();
         playerCollider = GetComponent<CapsuleCollider2D>();
+        gameSession = FindObjectOfType<GameSession>();
         groundLayer = LayerMask.GetMask("Ground");
         climbingLayer = LayerMask.GetMask("Climbing");
         hazardsLayer = LayerMask.GetMask("Hazards");
@@ -42,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private void Run()
     {
         Vector2 playerVelocity = new Vector2 (moveInput.x * runSpeed, 0);
-        rb2d.AddForce(playerVelocity);
+        rb2d.AddForce(playerVelocity * Time.deltaTime);
         animator.SetBool("isRunning", playerIsReallyMoving);
     }
     private void Climb()
