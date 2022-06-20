@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -8,6 +7,8 @@ public class Health : MonoBehaviour
     [SerializeField] EnemySO enemySO;
     private ScoreKeeper scoreKeeper;
     private DamageAnimations damageAnimations;
+    private LevelManager levelManager;
+    private UIDisplay uiDisplay;
     private AudioPlayer audioPlayer;
     private CameraShake cameraShake;
 
@@ -18,6 +19,8 @@ public class Health : MonoBehaviour
 
     private void Awake() 
     {
+        levelManager = FindObjectOfType<LevelManager>();
+        uiDisplay = FindObjectOfType<UIDisplay>();
         audioPlayer = FindObjectOfType<AudioPlayer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
@@ -61,6 +64,10 @@ public class Health : MonoBehaviour
         
         if (health <= 0)
         {
+            if (isPlayer)
+            {
+                levelManager.LoadGameOver();
+            }
             scoreKeeper.UpdateScore(isPlayer ? 0 : enemySO.points);
             audioPlayer.PlayOnDestroy(isPlayer);
             damageAnimations.PlayOnDeath();
@@ -70,6 +77,10 @@ public class Health : MonoBehaviour
         {
             audioPlayer.PlayOnDamageTaken();
             damageAnimations.PlayOnDamageTaken();
+        }
+        if (isPlayer)
+        {
+            uiDisplay.SetHealthText(health);
         }
     }
 }
