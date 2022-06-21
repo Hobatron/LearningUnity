@@ -3,20 +3,23 @@ using UnityEngine;
 public class ScoreKeeper : MonoBehaviour
 {
     private UIDisplay uiDisplay;
+    static ScoreKeeper instance;
 
-    public int score {get; private set;}
+    public int score {get; private set;} = 0;
 
     private void Awake() 
     {
-        if (FindObjectsOfType<ScoreKeeper>().Length > 1)
+        if (instance != null)
         {
+            gameObject.SetActive(false);
             Destroy(gameObject);
         }
         else
         {
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        uiDisplay = FindObjectOfType<UIDisplay>();
+        instance.uiDisplay = FindObjectOfType<UIDisplay>();
     }
 
     public int UpdateScore(int points)
@@ -34,6 +37,9 @@ public class ScoreKeeper : MonoBehaviour
 
     private void updateScoreUi()
     {
-        uiDisplay.SetScoreText(score);
+        if (uiDisplay != null)
+        {
+            uiDisplay.SetScoreText(score);
+        }
     }
 }

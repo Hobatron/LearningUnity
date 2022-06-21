@@ -21,11 +21,11 @@ public class Shooter : MonoBehaviour
 
     void Awake()
     {
-        audioPlayer = FindObjectOfType<AudioPlayer>();
     }
 
     private void Start() 
     {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
         if (useAI)
         {
             isFiring = true;

@@ -20,9 +20,35 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] [Range(0f, 1f)] private float pitchSpeed;
     private AudioSource audioSource;
 
+    static AudioPlayer instance;
+    private Coroutine coroutine;
+
     private void Awake() 
     {
-        audioSource = GetComponent<AudioSource>();  
+        audioSource = GetComponent<AudioSource>();
+        ManageSingleton();
+    }
+
+    private void ManageSingleton()
+    {
+        if(instance != null)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    public void StopMyCoroutine()
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
     }
 
     public void PlayShootingClip()
@@ -40,7 +66,7 @@ public class AudioPlayer : MonoBehaviour
         if (isPlayer)
         {
             PlayClip(playerDestroyed, damageVolume);
-            StartCoroutine(ReducePitch());
+            coroutine = StartCoroutine(ReducePitch());
         } 
         else
         {

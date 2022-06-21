@@ -1,17 +1,28 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    private AudioPlayer audioPlayerSource;
+    private ScoreKeeper scoreKeeper;
+
+    private void Awake() {
+        audioPlayerSource = FindObjectOfType<AudioPlayer>();
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+    }
+
     public void LoadGame()
     {
+        audioPlayerSource.GetComponent<AudioSource>().pitch = 1;
+        scoreKeeper.ResetScore();
+        audioPlayerSource.StopMyCoroutine();
         SceneManager.LoadScene("GameScene");
     }
     public void LoadMainMenu()
     {
+        audioPlayerSource.GetComponent<AudioSource>().pitch = 1;
+        audioPlayerSource.StopMyCoroutine();
         SceneManager.LoadScene("MainMenu");
     }
     public void LoadGameOver()

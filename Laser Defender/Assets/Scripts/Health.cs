@@ -21,12 +21,12 @@ public class Health : MonoBehaviour
     {
         levelManager = FindObjectOfType<LevelManager>();
         uiDisplay = FindObjectOfType<UIDisplay>();
-        audioPlayer = FindObjectOfType<AudioPlayer>();
-        scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
 
     private void Start() 
     {
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        audioPlayer = FindObjectOfType<AudioPlayer>();
         damageAnimations = GetComponent<DamageAnimations>();
         cameraShake = Camera.main.GetComponent<CameraShake>();
         health = isPlayer ? health : enemySO.health;
