@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f59657443ad38342b4a3528111f1a7d, type: 3}
   m_Name: Wave 0
   m_EditorClassIdentifier: 
-  enemyPrefabs:
+  pathingEnemyPrefabs:
   - {fileID: 3236899043651095302, guid: 32fd9cdaa5d7043458381a857820e9cc, type: 3}
   - {fileID: 3236899043651095302, guid: 32fd9cdaa5d7043458381a857820e9cc, type: 3}
   - {fileID: 3236899043651095302, guid: 32fd9cdaa5d7043458381a857820e9cc, type: 3}
   - {fileID: 3236899043651095302, guid: 32fd9cdaa5d7043458381a857820e9cc, type: 3}
+  chargerPrefabs:
+  - {fileID: 3063885106878814385, guid: c4b12d6a0e8c1b34b976638d78920874, type: 3}
+  - {fileID: 3063885106878814385, guid: c4b12d6a0e8c1b34b976638d78920874, type: 3}
+  - {fileID: 3063885106878814385, guid: c4b12d6a0e8c1b34b976638d78920874, type: 3}
   pathePrefab: {fileID: 1723629953996629364, guid: 31a830c4c4e1cf5478fe03083ca7fbee, type: 3}
+  chargerSpawnsPrefab: {fileID: 2180796387797556970, guid: b8207e35b0d8f4244860b8b2e6545753, type: 3}
   moveSpeed: 5
   timeBetween: 1
   spawnTimeVariance: 0.3

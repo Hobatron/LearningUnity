@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,32 +5,81 @@ using UnityEngine;
 public class WaveConfigSO : ScriptableObject
 {
     EnemySpawner enemySpawner;
-    [SerializeField] List<GameObject> enemyPrefabs;
+    [SerializeField] List<GameObject> pathingEnemyPrefabs;
+    [SerializeField] List<GameObject> chargerPrefabs;
+    [SerializeField] List<GameObject> smartBugPrefabs;
     [SerializeField] Transform pathePrefab;
+    [SerializeField] Transform smartBugPathPrefab;
+    [SerializeField] Transform chargerSpawnsPrefab;
 
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float timeBetween = 1f;
     [SerializeReference] float spawnTimeVariance = .3f;
     [SerializeReference] float minimumSpawnTime = .5f;
 
+    internal List<string> GetListOfSpawnables()
+    {
+        List<string> list = new List<string>();
+        pathingEnemyPrefabs.ForEach(l => list.Add("pather"));
+        chargerPrefabs.ForEach(l => list.Add("charger"));
+        smartBugPrefabs.ForEach(l => list.Add("smartBug"));
+        return list;
+    }
+
     public Transform GetStartingWaypoint()
     {
         return pathePrefab.GetChild(0);
     }
+    public Transform GetSmartBugStartingWaypoint()
+    {
+        return smartBugPathPrefab.GetChild(0);
+    }
+
+    public bool HasChargers()
+    {
+        return chargerSpawnsPrefab != null;
+    }
+
+    public Transform GetChargerSpawnPoint()
+    {
+        Transform[] spawnPoints = chargerSpawnsPrefab.GetComponentsInChildren<Transform>();
+        return spawnPoints[Random.Range(1, spawnPoints.Length)];
+    }
 
     public int GetEnemyCount()
     {
-        return enemyPrefabs.Count;
+        return pathingEnemyPrefabs.Count + chargerPrefabs.Count + smartBugPrefabs.Count;
+    }
+
+    public GameObject GetChargerPrefab(int index)
+    {
+        return chargerPrefabs[index];
+    }
+
+    public GameObject GetSmartBugPrefab(int index)
+    {
+        Debug.Log(smartBugPrefabs);
+        return smartBugPrefabs[index];
     }
 
     public GameObject GetEnemyPrefab(int index)
     {
-        return enemyPrefabs[index];
+        return pathingEnemyPrefabs[index];
     }
 
     public float GetMoveSpeed()
     {
         return moveSpeed;
+    }
+
+    public List<Transform> GetSmartBugWaypoints()
+    {
+        List<Transform> waypoints = new List<Transform>();
+        foreach (Transform child in smartBugPathPrefab)
+        {
+            waypoints.Add(child);
+        }
+        return waypoints;
     }
 
     public List<Transform> GetWaypoints()
