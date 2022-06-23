@@ -50,20 +50,17 @@ public class Shooter : MonoBehaviour
         }
     }
 
+    public void FireAimedShot(float angle)
+    {
+        InitProj(angle);
+    }
+
     IEnumerator FireContinuously()
     {
         while (true)
         {
-            var rotateProj = useAI ? 180f : 0f;
-            GameObject projGameObj = Instantiate(projectilePrefab, 
-                        gameObject.transform.position, 
-                        Quaternion.Euler(0,0,rotateProj));
-            Rigidbody2D rb = projGameObj.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.velocity = transform.up * projectileSpeed;
-            }
-            Destroy(projGameObj, projectileLifeTime);
+            var angle = useAI ? 180f : 0f;
+            InitProj(angle);
 
             fireRate = useAI ?
                         Mathf.Clamp(
@@ -76,5 +73,18 @@ public class Shooter : MonoBehaviour
 
             yield return new WaitForSeconds(fireRate);
         };
+    }
+
+    private void InitProj(float angle)
+    {
+        GameObject projGameObj = Instantiate(projectilePrefab, 
+                        gameObject.transform.position, 
+                        Quaternion.Euler(0,0,angle));
+        Rigidbody2D rb = projGameObj.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = projGameObj.transform.up * projectileSpeed;
+        }
+        Destroy(projGameObj, projectileLifeTime);
     }
 }

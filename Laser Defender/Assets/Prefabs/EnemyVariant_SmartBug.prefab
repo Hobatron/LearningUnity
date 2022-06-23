@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: health
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: -1225298106521640228, guid: 32fd9cdaa5d7043458381a857820e9cc, type: 3}
+      propertyPath: enemySO
+      value: 
+      objectReference: {fileID: 11400000, guid: 301f43dbc7d6d8f4b8cc5430d8b856ee, type: 2}
     - target: {fileID: 328747399218060951, guid: 32fd9cdaa5d7043458381a857820e9cc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -101,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6211799570150993710, guid: 32fd9cdaa5d7043458381a857820e9cc, type: 3}
       propertyPath: delayForSmartBug
-      value: 1
+      value: 24.66
       objectReference: {fileID: 0}
     - target: {fileID: 6211799570150993710, guid: 32fd9cdaa5d7043458381a857820e9cc, type: 3}
       propertyPath: rotationSpeedSmartBug

@@ -7,16 +7,20 @@ public class PathFinder : MonoBehaviour
 {
     [SerializeField] bool isSmartBug;
     [SerializeField] float delayForSmartBug;
-    [SerializeField]  float rotationSpeedSmartBug;
+    [SerializeField] float rotationSpeedSmartBug;
     WaveConfigSO waveConfig;
     List<Transform> waypoints;
-    int currentWaypoint = 0;
     private EnemySpawner enemySpawner;
+    private Player player;
+    private Shooter shooter;
     private bool notInCo = true;
+    private int currentWaypoint = 0;
 
     void Awake() 
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
+        player = FindObjectOfType<Player>();
+        shooter = GetComponent<Shooter>();
     }
 
 
@@ -63,9 +67,15 @@ public class PathFinder : MonoBehaviour
 
     IEnumerator WaitToShootThenMove()
     {
-        //shoot
+        Vector3 direction = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        
         StartCoroutine(TurnTowardsNextPosition());
-        yield return new WaitForSeconds(delayForSmartBug);
+        if (currentWaypoint != 0 && currentWaypoint != waypoints.Count - 1)
+        {
+            shooter.FireAimedShot(angle*-1); 
+        }
+        yield return new WaitForSeconds(delayForSmartBug); 
     }
 
     IEnumerator TurnTowardsNextPosition()

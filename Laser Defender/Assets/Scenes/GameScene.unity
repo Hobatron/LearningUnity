@@ -591,7 +591,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - {fileID: 11400000, guid: e63e6bc1422037140a67ccb5264aa7c5, type: 2}
-  - {fileID: 11400000, guid: 76e578c917288504a8a66fbeac8d51a7, type: 2}
   timeBetweenWaves: 0
   spawning: 1
 --- !u!1 &1041317865
@@ -1313,7 +1312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5699412461349716623, guid: e7568377f93ddd04aba7bbf047076c8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.9
+      value: -6.87
       objectReference: {fileID: 0}
     - target: {fileID: 5699412461349716623, guid: e7568377f93ddd04aba7bbf047076c8b, type: 3}
       propertyPath: m_LocalPosition.z

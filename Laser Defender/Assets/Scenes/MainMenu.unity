@@ -1414,10 +1414,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 4371405287674648962, guid: 0e2cf9cfa195a62459af020da76bb56f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4371405287674832508, guid: 0e2cf9cfa195a62459af020da76bb56f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1461,10 +1457,6 @@ PrefabInstance:
     - target: {fileID: 4371405287674832508, guid: 0e2cf9cfa195a62459af020da76bb56f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4371405287674832509, guid: 0e2cf9cfa195a62459af020da76bb56f, type: 3}
-      propertyPath: Mute
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2cf9cfa195a62459af020da76bb56f, type: 3}

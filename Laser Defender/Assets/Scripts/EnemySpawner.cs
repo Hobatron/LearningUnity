@@ -79,8 +79,6 @@ public class EnemySpawner : MonoBehaviour
     
     private void SpawnSmartBug(int i)
     {
-        waveConfigs = null;
-        spawning = false;
         Debug.Log("Trying to spawn a smart boy");
         Instantiate(currentWave.GetSmartBugPrefab(i), 
                     currentWave.GetSmartBugStartingWaypoint().position, 
