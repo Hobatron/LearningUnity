@@ -14,5 +14,6 @@ public enum ItemType {
     Ring,
     Shoulder,
     Unequippable,
-    Wrist
+    Wrist,
+    Weapon
  };
